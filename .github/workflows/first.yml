@@ -6,6 +6,6 @@ jobs:
   syntax:
     runs-on: ubuntu-20.04
     steps:
-      uses: actions/checkout@v2
-      run: apt update && apt install -y php && php --version
-      run: find src -type f -name "*.php" | xargs -n1 php -l
+      - uses: actions/checkout@v2
+      - run: apt update && apt install -y php && php --version
+      - run: find src -type f -name "*.php" | xargs -n1 php -l

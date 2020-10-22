@@ -1,0 +1,7 @@
+name: First-Script
+
+on: push
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

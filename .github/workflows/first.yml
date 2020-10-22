@@ -7,5 +7,16 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - run: sudo apt update && sudo apt install -y php && php --version
+      - run: sudo apt update && sudo apt install -y php
+      - run: php --version
+      - run: find src -type f -name "*.php" | xargs -n1 php -l
+  quality:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt update && \
+             sudo apt install -y wget php php-tokenizer php-xml && \
+             sudo wget -O /usr/local/bin/phpcs https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar && \
+             sudo chmod +x /usr/local/bin/phpcs
+      - run: php --version && phpcs --version
       - run: find src -type f -name "*.php" | xargs -n1 php -l
